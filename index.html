@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="املاک پارسیا شیراز؛ جستجوی خرید، فروش، رهن و اجاره ملک">
+  <title>املاک پارسیا | شیراز</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f3f6fa;
+      color: #182b43;
+    }
+
+    header {
+      background: #102c4c;
+      color: white;
+      padding: 20px 7%;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    nav a:hover {
+      color: #a8d5ff;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #102c4c, #21649c);
+      color: white;
+      text-align: center;
+      padding: 75px 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(26px, 5vw, 42px);
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      color: #dce9f7;
+      line-height: 2;
+    }
+
+    .search-box {
+      background: white;
+      color: #182b43;
+      max-width: 850px;
+      margin: 35px auto 0;
+      padding: 20px;
+      border-radius: 14px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      box-shadow: 0 8px 25px #0002;
+    }
+
+    input, select, button {
+      padding: 13px;
+      border-radius: 8px;
+      font: inherit;
+    }
+
+    input, select {
+      border: 1px solid #d5dce5;
+      flex: 1;
+      min-width: 150px;
+    }
+
+    button {
+      border: none;
+      background: #1765a3;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #104b7c;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 45px 20px;
+    }
+
+    .section-title {
+      margin-bottom: 25px;
+    }
+
+    .properties {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px #102c4c12;
+    }
+
+    .property-image {
+      background: #dce9f5;
+      height: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 70px;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .location {
+      color: #66788d;
+    }
+
+    .price {
+      color: #1765a3;
+      font-weight: bold;
+      margin: 18px 0;
+    }
+
+    .card button {
+      width: 100%;
+    }
+
+    .about {
+      background: white;
+      padding: 45px 20px;
+      text-align: center;
+      line-height: 2.2;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    footer {
+      background: #102c4c;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+      line-height: 2;
+    }
+
+    .empty {
+      display: none;
+      text-align: center;
+      padding: 30px;
+      color: #66788d;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 50px 15px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      input, select, button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">🏠 املاک پارسیا</div>
+      <div>
+        <a href="#home">خانه</a>
+        <a href="#properties">املاک</a>
+        <a href="#about">درباره ما</a>
+        <a href="#contact">تماس با ما</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <h1>خانه دلخواهتان را در شیراز پیدا کنید</h1>
+      <p>خرید، فروش، رهن و اجاره ملک با املاک پارسیا</p>
+
+      <div class="search-box">
+        <input
+          type="search"
+          id="location"
+          placeholder="نام محله، مثلاً معالی‌آباد"
+          aria-label="جستجوی محله"
+        >
+
+        <select id="dealType" aria-label="نوع معامله">
+          <option value="all">همه معاملات</option>
+          <option value="خرید">خرید</option>
+          <option value="اجاره">رهن و اجاره</option>
+        </select>
+
+        <button onclick="searchProperties()">جستجوی ملک</button>
+        <button onclick="resetSearch()">نمایش همه</button>
+      </div>
+    </section>
+
+    <section class="container" id="properties">
+      <h2 class="section-title">املاک پیشنهادی پارسیا</h2>
+
+      <div class="properties">
+
+        <article class="card" data-location="شیراز معالی آباد معالی‌آباد" data-type="خرید">
+          <div class="property-image">🏡</div>
+          <div class="card-content">
+            <h3>آپارتمان ۱۲۰ متری</h3>
+            <p class="location">📍 شیراز، معالی‌آباد</p>
+            <p>📐 ۱۲۰ متر | 🛏 ۳ خواب</p>
+            <p>🚗 پارکینگ | 🛗 آسانسور</p>
+            <p class="price">۸ میلیارد تومان</p>
+            <button onclick="contactAgent()">اطلاعات تماس</button>
+          </div>
+        </article>
+
+        <article class="card" data-location="شیراز فرهنگ شهر فرهنگ‌شهر" data-type="اجاره">
+          <div class="property-image">🏢</div>
+          <div class="card-content">
+            <h3>آپارتمان ۹۰ متری</h3>
+            <p class="location">📍 شیراز، فرهنگ‌شهر</p>
+            <p>📐 ۹۰ متر | 🛏 ۲ خواب</p>
+            <p>🚗 پارکینگ | انباری</p>
+            <p class="price">رهن ۵۰۰ میلیون | اجاره ۱۵ میلیون</p>
+            <button onclick="contactAgent()">اطلاعات تماس</button>
+          </div>
+        </article>
+
+        <article class="card" data-location="شیراز قصرالدشت" data-type="خرید">
+          <div class="property-image">🏠</div>
+          <div class="card-content">
+            <h3>ویلای ۲۵۰ متری</h3>
+            <p class="location">📍 شیراز، قصرالدشت</p>
+            <p>📐 ۲۵۰ متر | 🛏 ۴ خواب</p>
+            <p>🌳 حیاط اختصاصی | پارکینگ</p>
+            <p class="price">۲۲ میلیارد تومان</p>
+            <button onclick="contactAgent()">اطلاعات تماس</button>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="empty" id="emptyMessage">
+        ملکی با این مشخصات پیدا نشد.
+      </p>
+    </section>
+
+    <section class="about" id="about">
+      <h2>درباره املاک پارسیا</h2>
+      <p>
+        املاک پارسیا با هدف ارائه خدمات خرید، فروش،
+        رهن و اجاره املاک در شهر شیراز فعالیت می‌کند.
+        هدف ما فراهم کردن تجربه‌ای ساده و مطمئن
+        برای جستجو و انتخاب ملک مناسب است.
+      </p>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <h3>املاک پارسیا | شیراز</h3>
+    <p>برای دریافت اطلاعات بیشتر با مشاوران ما در ارتباط باشید.</p>
+    <p>شماره تماس: به‌زودی</p>
+    <p>© 2026 Parsia Real Estate</p>
+  </footer>
+
+  <script>
+    function normalizeText(text) {
+      return text
+        .replace(/آ/g, 'ا')
+        .replace(/ي/g, 'ی')
+        .replace(/ك/g, 'ک')
+        .replace(/\u200c/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .toLowerCase();
+    }
+
+    function searchProperties() {
+      const location = normalizeText(
+        document.getElementById('location').value
+      );
+
+      const type = document.getElementById('dealType').value;
+      const cards = document.querySelectorAll('.card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardLocation = normalizeText(card.dataset.location);
+        const matchesLocation = cardLocation.includes(location);
+        const matchesType =
+          type === 'all' || card.dataset.type === type;
+
+        const visible = matchesLocation && matchesType;
+        card.style.display = visible ? 'block' : 'none';
+
+        if (visible) visibleCount++;
+      });
+
+      document.getElementById('emptyMessage').style.display =
+        visibleCount === 0 ? 'block' : 'none';
+    }
+
+    function resetSearch() {
+      document.getElementById('location').value = '';
+      document.getElementById('dealType').value = 'all';
+      searchProperties();
+    }
+
+    function contactAgent() {
+      alert('اطلاعات تماس املاک پارسیا به‌زودی اضافه می‌شود.');
+    }
+  </script>
+
+</body>
+</html> 
